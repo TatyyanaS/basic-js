@@ -11,12 +11,9 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getEmailDomain(email) {
-  let a = email.lastIndexOf('@');
-  let arr = Array.from(email).slice(a+1);
-  console.log(arr.join(''));
-  return arr.join('');
+  return email.slice(email.lastIndexOf('@') + 1);
 }
-// getEmailDomain('example-indeed@strange-example.com'); //'strange-example.com';
+
 module.exports = {
   getEmailDomain
 };

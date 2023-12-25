@@ -15,31 +15,13 @@ const { NotImplementedError } = require('../extensions/index.js');
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
-
 function repeater(str, options) {
   let string = '';
-  let repeatTimes = options.repeatTimes;
-  if (repeatTimes === undefined || repeatTimes === null) {
-    repeatTimes = 1;
-  }
-  let separator = options.separator;
-  if (separator === undefined || separator === null) {
-    separator = '+';
-  }
-  let addition = options.addition;
-  if (addition === undefined || addition === null) {
-    addition = '';
-  } else {
-    addition = String(addition);
-  }
-  let additionRepeatTimes = options.additionRepeatTimes;
-  if (additionRepeatTimes === undefined || additionRepeatTimes === null) {
-    additionRepeatTimes = 1;
-  }
-  let additionSeparator = options.additionSeparator;
-  if (additionSeparator === undefined || additionSeparator === null) {
-    additionSeparator = '|';
-  }
+  let repeatTimes = options.repeatTimes || 1;
+  let separator = options.separator || '+';
+  let addition = options.addition !== undefined ? String(options.addition) : '';
+  let additionRepeatTimes = options.additionRepeatTimes || 1;
+  let additionSeparator = options.additionSeparator || '|';
 
   for (let i = 0; i < repeatTimes; i++) {
     string += str;
@@ -53,11 +35,9 @@ function repeater(str, options) {
       string += separator;
     }
   }
-  console.log(string);
   return string;
 }
-// repeater('la', { repeatTimes: 3, separator: 's', addition: '+', additionRepeatTimes: 1 })
-// 'la+sla+sla+'
+
 
 module.exports = {
   repeater
